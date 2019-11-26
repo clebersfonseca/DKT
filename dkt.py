@@ -30,7 +30,9 @@ def simplifica_equação(equ):
         i = i + 1
     return equ
 
-
+"""
+Função para criar do One Hot Encode
+"""
 def get_OHE(df):
     df_OHE = pd.concat([df[['e-mail', 'AD', 'SB', "MT", "DV", "SP", "PA", "PM", "MM", "DM", "AF", "MF", "DF", "OI", "UT", "RE", "ER", "DE"]], 
                         pd.get_dummies(df[['exercício', 'passo']], drop_first=False)], axis=1)
@@ -67,12 +69,7 @@ df['passo'] = label_encoder.fit_transform(df['passo'])
 previsores = df.values
 #previsores = get_OHE(df)
 
-#print(df.head())
-
-
 previsores = np.reshape(previsores, (previsores.shape[0], previsores.shape[1], 1))
-
-print(previsores.shape)
 
 
 """
